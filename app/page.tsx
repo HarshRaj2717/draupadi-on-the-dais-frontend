@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <div>
@@ -15,7 +17,9 @@ export default function Home() {
               Find women experts available for speaking opportunities at your
               leadership-level panel discussions.
             </p>
-            <button className="btn btn-primary">Get Started</button>
+            <Link href={"/login"} className="btn btn-primary">
+              Get Started
+            </Link>
           </div>
         </div>
       </div>
