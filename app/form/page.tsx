@@ -32,6 +32,24 @@ const Form: React.FC = () => {
       setState({ ...state, [name]: value });
     }
   };
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index?: number) => {
+  //   const { name, value } = e.target;
+  //   console.log('Name:', name);
+  //   console.log('Value:', value);
+  //   setState(prevState => {
+  //     if (name === 'youtubeLinks' && typeof index === 'number') {
+  //       const updatedLinks = [...prevState.youtubeLinks];
+  //       updatedLinks[index] = value;
+  //       console.log('Updated Links:', updatedLinks);
+  //       return { ...prevState, youtubeLinks: updatedLinks };
+  //     } else {
+  //       console.log('Other Field:', name);
+  //       return { ...prevState, [name]: value };
+  //     }
+  //   });
+  // };
+  
+
 
   const handleAddLink = () => {
     setState({ ...state, youtubeLinks: [...state.youtubeLinks, ''] });
