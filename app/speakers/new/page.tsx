@@ -1,10 +1,10 @@
-"use client"
-import React, { useState } from 'react';
+"use client";
+import React, { useState } from "react";
 
 interface FormState {
   name: string;
   city: string;
-  userId: string;
+  emailID: string;
   youtubeLinks: string[];
   bio: string;
   education: string;
@@ -13,18 +13,21 @@ interface FormState {
 
 const Form: React.FC = () => {
   const [state, setState] = useState<FormState>({
-    name: '',
-    city: '',
-    userId: '',
-    youtubeLinks: [''],
-    bio: '',
-    education: '',
-    experience: '',
+    name: "",
+    city: "",
+    emailID: "",
+    youtubeLinks: [""],
+    bio: "",
+    education: "",
+    experience: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index?: number) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    index?: number
+  ) => {
     const { name, value } = e.target;
-    if (name === 'youtubeLinks' && typeof index === 'number') {
+    if (name === "youtubeLinks" && typeof index === "number") {
       const updatedLinks = [...state.youtubeLinks];
       updatedLinks[index] = value;
       setState({ ...state, youtubeLinks: updatedLinks });
@@ -48,11 +51,9 @@ const Form: React.FC = () => {
   //     }
   //   });
   // };
-  
-
 
   const handleAddLink = () => {
-    setState({ ...state, youtubeLinks: [...state.youtubeLinks, ''] });
+    setState({ ...state, youtubeLinks: [...state.youtubeLinks, ""] });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -61,55 +62,77 @@ const Form: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen py-8">
+    <div className="bg-base-300 min-h-screen py-8">
       <div className="max-w-3xl mx-auto px-4">
-        <h1 className="text-3xl font-semibold text-center mb-8">Be a Speaker</h1>
-        <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
+        <h1 className="text-3xl font-semibold text-center mb-8">
+          Be a Speaker
+        </h1>
+        <form
+          onSubmit={handleSubmit}
+          className="bg-base-200 p-8 rounded-xl shadow-lg"
+        >
           {/* Name Input */}
           <div className="mb-4">
-            <label htmlFor="name" className="block text-lg font-medium text-gray-600">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={state.name}
-              onChange={handleChange}
-              className="mt-1 p-2 w-full border rounded-md focus:border-blue-500"
-              required
-            />
+            <label
+              htmlFor="name"
+              className="input input-bordered flex items-center gap-2"
+            >
+              Name
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={state.name}
+                onChange={handleChange}
+                className="grow italic"
+                required
+              />
+            </label>
           </div>
 
           {/* City Input */}
           <div className="mb-4">
-            <label htmlFor="city" className="block text-lg font-medium text-gray-600">City</label>
-            <input
+            <label
+              htmlFor="city"
+              className="input input-bordered flex items-center gap-2"
+            >
+              City
+              <input
               type="text"
               id="city"
               name="city"
               value={state.city}
               onChange={handleChange}
-              className="mt-1 p-2 w-full border rounded-md focus:border-blue-500"
+              className="grow italic"
               required
             />
+            </label>
           </div>
 
-          {/* UserId Input */}
+          {/* emailID Input */}
           <div className="mb-4">
-            <label htmlFor="userId" className="block text-lg font-medium text-gray-600">User ID</label>
-            <input
-              type="text"
-              id="userId"
-              name="userId"
-              value={state.userId}
+            <label
+              htmlFor="emailID"
+              className="input input-bordered flex items-center gap-2"
+            >
+              Email ID
+              <input
+              type="email"
+              id="emailID"
+              name="emailID"
+              value={state.emailID}
               onChange={handleChange}
-              className="mt-1 p-2 w-full border rounded-md focus:border-blue-500"
+              className="grow italic"
               required
             />
+            </label>
           </div>
 
           {/* YouTube Links */}
           <div className="mb-4">
-            <label className="block text-lg font-medium text-gray-600">YouTube Links</label>
+            <label className="block text-lg font-medium text-gray-600">
+              YouTube Links
+            </label>
             {state.youtubeLinks.map((link, index) => (
               <input
                 key={index}
@@ -119,51 +142,76 @@ const Form: React.FC = () => {
                 className="mt-1 p-2 w-full border rounded-md focus:border-blue-500"
               />
             ))}
-            <button type="button" onClick={handleAddLink} className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Add Link</button>
+            <button
+              type="button"
+              onClick={handleAddLink}
+              className="mt-2 btn btn-sm btn-secondary"
+            >
+              Add Link
+            </button>
           </div>
 
           {/* Bio */}
           <div className="mb-4">
-            <label htmlFor="bio" className="block text-lg font-medium text-gray-600">Bio</label>
+            <label
+              htmlFor="bio"
+              className="textarea textarea-bordered flex items-center gap-2"
+            >
+              Bio
             <textarea
               id="bio"
               name="bio"
               value={state.bio}
               onChange={handleChange}
-              className="mt-1 p-2 w-full border rounded-md focus:border-blue-500"
+              className="textarea textarea-bordered grow italic"
               required
             />
+            </label>
           </div>
 
           {/* Education */}
           <div className="mb-4">
-            <label htmlFor="education" className="block text-lg font-medium text-gray-600">Education</label>
+            <label
+              htmlFor="education"
+              className="input input-bordered flex items-center gap-2"
+            >
+              Education
             <input
               type="text"
               id="education"
               name="education"
               value={state.education}
               onChange={handleChange}
-              className="mt-1 p-2 w-full border rounded-md focus:border-blue-500"
+              className="grow italic"
               required
             />
+            </label>
           </div>
 
           {/* Experience */}
           <div className="mb-4">
-            <label htmlFor="experience" className="block text-lg font-medium text-gray-600">Experience</label>
+            <label
+              htmlFor="experience"
+              className="input input-bordered flex items-center gap-2"
+            >
+              Experience
             <input
               type="text"
               id="experience"
               name="experience"
               value={state.experience}
               onChange={handleChange}
-              className="mt-1 p-2 w-full border rounded-md focus:border-blue-500"
+              className="grow italic"
               required
             />
+            </label>
           </div>
 
-          <button type="submit" className="w-1/3 mt-4 px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600">Submit</button>
+          <div className="flex justify-end">
+            <button type="submit" className="mt-4 btn btn-primary">
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     </div>

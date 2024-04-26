@@ -1,5 +1,5 @@
-"use client"
-import React from 'react';
+"use client";
+import React from "react";
 
 interface EventProps {
   eventName: string;
@@ -25,19 +25,19 @@ const Event: React.FC<EventProps> = ({
   brief,
 }) => {
   return (
-    <div className="bg-gray-100 min-h-screen py-8">
+    <div className="bg-base-300 min-h-screen py-8">
       <div className="max-w-4xl mx-auto px-4">
         {/* Event Image */}
         <div className="mb-8">
-          <img 
-            src="/path/to/event-image.jpg" 
-            alt={eventName} 
+          <img
+            src="/path/to/event-image.jpg"
+            alt={eventName}
             className="w-full h-64 object-cover rounded-lg shadow-md"
           />
         </div>
 
         {/* Event Details */}
-        <div className="bg-white p-8 rounded-lg shadow-md">
+        <div className="bg-base-200 p-8 rounded-lg shadow-md">
           <h1 className="text-3xl font-semibold mb-6">{eventName}</h1>
 
           {/* Organization */}
@@ -49,7 +49,12 @@ const Event: React.FC<EventProps> = ({
           {/* Organizer Profile Link */}
           <div className="mb-4">
             <h2 className="text-xl font-semibold mb-2">Organizer Profile:</h2>
-            <a href={organizerProfileLink} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+            <a
+              href={organizerProfileLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:underline"
+            >
               {organizerProfileLink}
             </a>
           </div>
@@ -84,10 +89,14 @@ const Event: React.FC<EventProps> = ({
             <ul className="list-disc pl-6">
               {guestSpeakers && guestSpeakers.length > 0 ? (
                 guestSpeakers.map((speaker, index) => (
-                  <li key={index} className="text-lg mb-2">{speaker}</li>
+                  <li key={index} className="text-lg mb-2">
+                    {speaker}
+                  </li>
                 ))
               ) : (
-                <li className="text-lg text-gray-500">No guest speakers announced yet.</li>
+                <li className="text-lg text-gray-500">
+                  No guest speakers announced yet.
+                </li>
               )}
             </ul>
           </div>
@@ -105,7 +114,8 @@ const Event: React.FC<EventProps> = ({
 
 export default Event;
 
-{/* <EventDetails
+{
+  /* <EventDetails
   eventName="Tech Conference 2024"
   organizationName="Tech Events"
   organizerProfileLink="https://example.com/organizer-profile"
@@ -115,5 +125,5 @@ export default Event;
   eventType="Conference"
   guestSpeakers={["Prachi", "Jane Doe"]}
   eventDescription="Join us for the Tech Conference 2024 where industry experts will discuss the latest trends and innovations."
-/> */}
-
+/> */
+}

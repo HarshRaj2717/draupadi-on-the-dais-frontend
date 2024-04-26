@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-export default function Login() {
+export default function SignUp() {
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
+        <div className="hero-content flex-col lg:flex-row">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
+            <h1 className="text-5xl font-bold">Sign Up now!</h1>
             <p className="py-6">
               If you are a speaker, panellist, thought leader or knowledge
               expert in your field, sign up to help event organisers find and
@@ -36,17 +36,12 @@ export default function Login() {
                   className="input input-bordered"
                   required
                 />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn btn-primary">Sign Up</button>
                 <div className="divider">OR</div>
-                <Link href={"/signup"} className="btn btn-outline">
-                  Sign Up
+                <Link href={"/login"} className="btn btn-outline">
+                  Login
                 </Link>
               </div>
             </form>
