@@ -21,7 +21,13 @@ function speakerlist() {
           industries, available for speaking opportunities.
         </span>
         <br></br> <br></br>
-        You can also <Link href={"/speakers/new"} className="font-bold italic link link-primary">be a speaker!</Link>
+        You can also{" "}
+        <Link
+          href={"/speakers/new"}
+          className="font-bold italic link link-primary"
+        >
+          be a speaker!
+        </Link>
       </p>
       <div className="h-full w-3xl flex-wrap flex justify-center items-center gap-10 flex-row">
         <Cardss />
@@ -52,7 +58,7 @@ function speakerlist() {
             <h2 className="card-title">Prachi Agarwal</h2>
             <p>Co-founder and CEO at Sama</p>
             <div className="card-actions justify-end">
-            <button className="btn btn-primary">Register</button>
+              <button className="btn btn-primary">Know More</button>
             </div>
           </div>
         </div>
