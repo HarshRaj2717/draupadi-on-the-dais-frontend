@@ -1,6 +1,9 @@
+"use client"
 import Link from "next/link";
+import { useState } from "react";
 
 export default function SignUp() {
+  
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">

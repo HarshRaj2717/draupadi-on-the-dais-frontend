@@ -1,6 +1,45 @@
+"use client"
+import axios from "axios";
 import Link from "next/link";
+import { useRouter } from 'next/navigation';
+import { useState } from "react";
 
 export default function Login() {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(username, email, password, "All data")
+    const userdata = {
+      username,
+      email,
+      password
+    }
+
+    try {
+      const response = await fetch('http://localhost:3001/api/v1/users/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userdata),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        console.log('User loggedIn successfully');
+        router.push('/speakers');
+      } else {
+        console.error('Failed to login user');
+      }
+
+    } catch (error) {
+      console.error('Error:', error);
+    }
+    
+  };
+
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -23,6 +62,21 @@ export default function Login() {
                   type="email"
                   placeholder="email"
                   className="input input-bordered"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Username</span>
+                </label>
+                <input
+                  type="username"
+                  placeholder="username"
+                  className="input input-bordered"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   required
                 />
               </div>
@@ -34,6 +88,8 @@ export default function Login() {
                   type="password"
                   placeholder="password"
                   className="input input-bordered"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
                 <label className="label">
@@ -43,7 +99,7 @@ export default function Login() {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn btn-primary" onClick={handleSubmit}>Login</button>
                 <div className="divider">OR</div>
                 <Link href={"/signup"} className="btn btn-outline">
                   Sign Up
