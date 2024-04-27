@@ -1,10 +1,6 @@
-"use client"
-import { useState } from 'react';
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function Login() {
-
-
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -27,6 +23,21 @@ export default function Login() {
                   type="email"
                   placeholder="email"
                   className="input input-bordered"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Username</span>
+                </label>
+                <input
+                  type="username"
+                  placeholder="username"
+                  className="input input-bordered"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   required
                 />
               </div>
@@ -38,13 +49,13 @@ export default function Login() {
                   type="password"
                   placeholder="password"
                   className="input input-bordered"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
               </div>
               <div className="form-control mt-6">
-                <button type="submit" className="btn btn-primary">
-                  Login
-                </button>
+                <button className="btn btn-primary">Login</button>
                 <div className="divider">OR</div>
                 <Link href="/signup" className="btn btn-outline">
                   Sign Up
