@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react'; // Import useState hook from React
 import Link from 'next/link';
 
-export default function Login() {
+export default function SignUp() {
  
   const router = useRouter();
  

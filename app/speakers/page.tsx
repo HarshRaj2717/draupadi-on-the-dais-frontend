@@ -1,7 +1,13 @@
-import React from "react";
+"use client"
+import React, { useEffect } from "react";
 import Link from "next/link";
+import {  useAuth } from "@/context/AuthContext";
 
 function speakerlist() {
+
+  const { user, login } = useAuth();
+  console.log("spearker page per hu ra bhabaa", user)
+
   return (
     <div className="h-full w-screen flex items-center gap-10 flex-col p-2 bg-base-200">
       <h1 className="text-3xl ml-6 w-full text-black text-left font-semibold">
