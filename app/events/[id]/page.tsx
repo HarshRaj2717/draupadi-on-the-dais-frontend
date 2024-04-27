@@ -5,6 +5,7 @@ interface EventProps {
   eventName: string;
   organizationName: string;
   organizerProfileLink: string;
+  state: string;
   venue: string;
   date: string;
   footfall: number;
@@ -17,6 +18,7 @@ const Event: React.FC<EventProps> = ({
   eventName,
   organizationName,
   organizerProfileLink,
+  state,
   venue,
   date,
   footfall,
@@ -57,6 +59,12 @@ const Event: React.FC<EventProps> = ({
             >
               {organizerProfileLink}
             </a>
+          </div>
+
+          {/* State */}
+          <div className="mb-4">
+            <h2 className="text-xl font-semibold mb-2">State:</h2>
+            <p className="text-lg">{state}</p>
           </div>
 
           {/* Venue */}

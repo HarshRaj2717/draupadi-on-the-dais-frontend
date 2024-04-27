@@ -7,7 +7,9 @@ interface FormState {
   emailID: string;
   youtubeLinks: string[];
   bio: string;
-  education: string;
+  degree: string;
+  field: string;
+  college: string;
   experience: string;
 }
 
@@ -18,7 +20,9 @@ const Form: React.FC = () => {
     emailID: "",
     youtubeLinks: [""],
     bio: "",
-    education: "",
+    degree: "",
+    field: "",
+    college: "",
     experience: "",
   });
 
@@ -129,7 +133,7 @@ const Form: React.FC = () => {
           </div>
 
           {/* YouTube Links */}
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <label className="block text-lg font-medium text-gray-600">
               YouTube Links
             </label>
@@ -149,7 +153,7 @@ const Form: React.FC = () => {
             >
               Add Link
             </button>
-          </div>
+          </div> */}
 
           {/* Bio */}
           <div className="mb-4">
@@ -169,18 +173,56 @@ const Form: React.FC = () => {
             </label>
           </div>
 
-          {/* Education */}
+          {/* Degree */}
           <div className="mb-4">
             <label
-              htmlFor="education"
+              htmlFor="degree"
               className="input input-bordered flex items-center gap-2"
             >
-              Education
+              Degree
             <input
               type="text"
-              id="education"
-              name="education"
-              value={state.education}
+              id="degree"
+              name="degree"
+              value={state.degree}
+              onChange={handleChange}
+              className="grow italic"
+              required
+            />
+            </label>
+          </div>
+
+          {/* Field */}
+          <div className="mb-4">
+            <label
+              htmlFor="field"
+              className="input input-bordered flex items-center gap-2"
+            >
+              Field
+            <input
+              type="text"
+              id="field"
+              name="field"
+              value={state.field}
+              onChange={handleChange}
+              className="grow italic"
+              required
+            />
+            </label>
+          </div>
+
+          {/* College */}
+          <div className="mb-4">
+            <label
+              htmlFor="college"
+              className="input input-bordered flex items-center gap-2"
+            >
+              College
+            <input
+              type="text"
+              id="college"
+              name="college"
+              value={state.college}
               onChange={handleChange}
               className="grow italic"
               required

@@ -6,6 +6,7 @@ interface EventState {
   name: string;
   organisation: string;
   profileLink: string;
+  st: string;
   venue: string;
   date: string;
   footfall: string;
@@ -18,6 +19,7 @@ const EventForm: React.FC = () => {
     name: "",
     organisation: "",
     profileLink: "",
+    st: "",
     venue: "",
     date: "",
     footfall: "",
@@ -95,6 +97,25 @@ const EventForm: React.FC = () => {
                 id="profileLink"
                 name="profileLink"
                 value={state.profileLink}
+                onChange={handleChange}
+                className="grow italic"
+                required
+              />
+            </label>
+          </div>
+
+          {/* State Input */}
+          <div className="mb-4">
+            <label
+              htmlFor="st"
+              className="input input-bordered flex items-center gap-2"
+            >
+              State
+              <input
+                type="text"
+                id="st"
+                name="st"
+                value={state.st}
                 onChange={handleChange}
                 className="grow italic"
                 required
