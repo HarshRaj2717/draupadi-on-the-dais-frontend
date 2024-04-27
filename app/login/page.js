@@ -1,6 +1,45 @@
+"use client"
+import axios from "axios";
 import Link from "next/link";
+import { useRouter } from 'next/navigation';
+import { useState } from "react";
 
 export default function Login() {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(username, email, password, "All data")
+    const userdata = {
+      username,
+      email,
+      password
+    }
+
+    try {
+      const response = await fetch('http://localhost:3001/api/v1/users/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userdata),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        console.log('User loggedIn successfully');
+        router.push('/speakers');
+      } else {
+        console.error('Failed to login user');
+      }
+
+    } catch (error) {
+      console.error('Error:', error);
+    }
+    
+  };
+
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -8,7 +47,7 @@ export default function Login() {
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Login now!</h1>
             <p className="py-6">
-              If you are a speaker, panellist, thought leader, or knowledge
+              If you are a speaker, panellist, thought leader or knowledge
               expert in your field, sign up to help event organisers find and
               invite you to leadership-level panels and conferences.
             </p>
@@ -53,11 +92,16 @@ export default function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
+                <label className="label">
+                  <a href="#" className="label-text-alt link link-hover">
+                    Forgot password?
+                  </a>
+                </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn btn-primary" onClick={handleSubmit}>Login</button>
                 <div className="divider">OR</div>
-                <Link href="/signup" className="btn btn-outline">
+                <Link href={"/signup"} className="btn btn-outline">
                   Sign Up
                 </Link>
               </div>
@@ -68,5 +112,3 @@ export default function Login() {
     </div>
   );
 }
-
-
