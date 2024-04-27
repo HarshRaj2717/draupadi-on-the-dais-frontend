@@ -20,7 +20,7 @@ export default function Login() {
     twitter: '',
     industry: '',
     organisation: '',
-    role: 'user',
+    // role: 'user',
   });
 
 
@@ -220,7 +220,7 @@ export default function Login() {
                   onChange={handleChange}
                 />
               </div>
-              <div className="form-control">
+              {/* <div className="form-control">
                  <label className="label">
                <span className="label-text">Role</span>
              </label>
@@ -233,7 +233,7 @@ export default function Login() {
                  <option value="user">User</option>
                  <option value="speaker">Speaker</option>
                  </select>
-                </div>
+                </div> */}
 
               <div className="form-control mt-6">
                 <button type="submit" className="btn btn-primary">
