@@ -1,7 +1,40 @@
+"use client"
+import { useEffect, useState } from "react";
 import React from "react";
 import Link from "next/link";
 
 function speakerlist() {
+
+
+
+  const[speakersData, setSpeakerData] = useState([]);
+
+  const getSpeakerDetails = async() => {
+    try {
+      const response = await fetch('http://localhost:3001/api/v1/speaker/speakers', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if(data){
+          setSpeakerData(data.data)
+          console.log(data)
+        }
+        
+      } else {
+        console.error('Failed to login user');
+      }
+
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
+  useEffect(() => {
+    getSpeakerDetails();
+  }, [])
   return (
     <div className="h-full w-screen flex items-center gap-10 flex-col p-2 bg-base-200">
       <h1 className="text-3xl ml-6 w-full text-black text-left font-semibold">
@@ -33,18 +66,22 @@ function speakerlist() {
         <Cardss />
         <Cardss />
         <Cardss />
+        {/* <Cardss />
         <Cardss />
         <Cardss />
         <Cardss />
         <Cardss />
         <Cardss />
-        <Cardss />
-        <Cardss />
+        <Cardss /> */}
+
+        {
+          speakersData && speakersData.length > 0  ? speakersData.map( (speaker) => Cardss(speaker)) : ""
+        }
       </div>
     </div>
   );
 
-  function Cardss() {
+  function Cardss(speaker: any) {
     return (
       <div>
         <div className="card w-[400px] h-[200px] card-side bg-base-100 shadow-xl ">
