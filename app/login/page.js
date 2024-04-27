@@ -1,14 +1,18 @@
-import Link from "next/link";
+"use client"
+import { useState } from 'react';
+import Link from 'next/link';
 
-export default function SignUp() {
+export default function Login() {
+
+
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row">
+        <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Sign Up now!</h1>
+            <h1 className="text-5xl font-bold">Login now!</h1>
             <p className="py-6">
-              If you are a speaker, panellist, thought leader or knowledge
+              If you are a speaker, panellist, thought leader, or knowledge
               expert in your field, sign up to help event organisers find and
               invite you to leadership-level panels and conferences.
             </p>
@@ -38,10 +42,12 @@ export default function SignUp() {
                 />
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Sign Up</button>
-                <div className="divider">OR</div>
-                <Link href={"/login"} className="btn btn-outline">
+                <button type="submit" className="btn btn-primary">
                   Login
+                </button>
+                <div className="divider">OR</div>
+                <Link href="/signup" className="btn btn-outline">
+                  Sign Up
                 </Link>
               </div>
             </form>
@@ -51,3 +57,5 @@ export default function SignUp() {
     </div>
   );
 }
+
+
