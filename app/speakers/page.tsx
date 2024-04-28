@@ -35,6 +35,7 @@ function speakerlist() {
   useEffect(() => {
     getSpeakerDetails();
   }, [])
+  
   return (
     <div className="h-full w-screen flex items-center gap-10 flex-col p-2 bg-base-200">
       <h1 className="text-3xl ml-6 w-full text-black text-left font-semibold">
