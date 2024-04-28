@@ -1,8 +1,10 @@
 "use client"
-import axios from "axios";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useContext } from "react";
+// import Auth
+import { useAuth } from "@/context/AuthContext";
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -10,9 +12,11 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const router = useRouter();
 
+  const { user, login, logout } = useAuth();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(username, email, password, "All data")
+
     const userdata = {
       username,
       email,
@@ -27,18 +31,25 @@ export default function Login() {
       });
 
       const data = await response.json();
+      
       if (response.ok) {
+        login(data);
+        localStorage.setItem("user", JSON.stringify(data.data))
+        
         console.log('User loggedIn successfully');
         router.push('/speakers');
       } else {
         console.error('Failed to login user');
       }
-
     } catch (error) {
       console.error('Error:', error);
     }
     
   };
+
+  useEffect(()=> {
+    
+  })
 
   return (
     <div>

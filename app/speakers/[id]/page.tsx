@@ -1,4 +1,39 @@
-function Profile() {
+"use client"
+import { useEffect, useState } from "react";
+
+function Profile({params}: {params: {id: string}}) {
+
+  const[speakersData, setSpeakerData] = useState();
+
+  const getSpeakerDetails = async() => {
+    try {
+      console.log(params);
+      const response = await fetch(`http://localhost:3001/api/v1/speaker/speaker/${params.id}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if(data){
+          setSpeakerData(data)
+          console.log("speaker data", data)
+        }
+        
+      } else {
+        console.error('Failed to login user');
+      }
+
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
+  useEffect(() => {
+    getSpeakerDetails();
+  }, [])
+  
+
   return (
     <div className="text-4xl mx-auto px-4 pt-10 mr-4 text-center bg-base-200">
       <div className="flex justify-center gap-20 items-center">

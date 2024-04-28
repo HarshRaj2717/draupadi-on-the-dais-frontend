@@ -1,8 +1,10 @@
 import Link from "next/link";
-
+import CollectData from "@/components/collectData";
 export default function Home() {
+
   return (
     <div>
+      <CollectData/>
       <div
         className="hero min-h-screen bg-base-200"
         style={{ backgroundImage: "url(women_bg.png)" }}
